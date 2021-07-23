@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,16 +13,19 @@ use App\Http\Controllers\CompanyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function(){
+Route::get('/', function () {
     return '<h1>ListPage</h1>';
 });
 Route::get('/company/create', function () {
     return view('Company/CompanyForm');
 });
-Route::get('/invoice', function(){
+Route::get('/invoice', function () {
     return view('Company/InvoicePage');
 });
-Route::get('/company/show',[CompanyController::class,'ShowCompany']);
-Route::post('/invoice',[CompanyController::class,'AddCompany']);
-Route::get('/company/delete/{company_id}',[CompanyController::class,'DeleteCompany']);
-Route::get('/company/update/{company_id}',[CompanyController::class,'UpdateCompany']);
+Route::get('/company/show', [CompanyController::class, 'ShowCompany'])->name('company.show');
+Route::post('/company/store', [CompanyController::class, 'StoreDetails'])->name('company.store');
+Route::post('/invoice', [CompanyController::class, 'AddCompany'])->name('company.create');
+Route::get('/company/delete/{company_id}', [CompanyController::class, 'DeleteCompany'])->name('company.delete');
+Route::get('/company/edit/{company_id}', [CompanyController::class, 'EditCompany'])->name('company.edit');
+Route::put('/company/update/{company_id}', [CompanyController::class, 'UpdateCompany'])->name('company.update');
+//Route::resource('companies','CompanyController');
