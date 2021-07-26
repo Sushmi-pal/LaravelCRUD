@@ -79,13 +79,9 @@
                 <td>{{$EachCompany->Email}}</td>
                 <td>{{$EachCompany->City}}</td>
                 <td>{{$EachCompany->ContactNumber}}</td>
-                <td><a href="/company/delete/{{$EachCompany->id}}">Delete</a></td>
+                <td><a href="{{route('company.delete', $EachCompany->id)}}">Delete</a> /
+                    <a href="{{route('company.edit', $EachCompany->id)}}">Edit</a></td>
             </tr>
-            <td><a href="/company/update/{{$EachCompany->id}}"><!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Edit
-                    </button>
-                </a></td></tr>
             <?php $index++;?>
         @endforeach<br>
         </tbody>
