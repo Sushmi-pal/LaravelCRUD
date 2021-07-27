@@ -24,15 +24,29 @@ class CompanyRequest extends FormRequest
     public function rules()
 
     {
-        $rules = [
-            'cname' => 'required',
-            'address' => 'required',
-            'email' => 'required|email|unique:companies,Email',
-            'city' => 'required',
-            'phone' => 'required'
-        ];
-        return $rules;
+        switch($this->method()) {
+            case 'POST':
+                return [
+                    'cname' => 'required',
+                    'address' => 'required',
+                    'email' => 'required|email|unique:companies,Email',
+                    'city' => 'required',
+                    'phone' => 'required'
+                ];
+
+            case 'PUT':
+                return [
+                    'cname' => 'required',
+                    'address' => 'required',
+                    'email' => 'required|email',
+                    'city' => 'required',
+                    'phone' => 'required'
+                ];
+            default:break;
+
+        }
     }
+
 
     public function messages()
     {

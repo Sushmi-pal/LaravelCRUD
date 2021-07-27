@@ -118,7 +118,7 @@ class CompanyController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Validation\ValidationException
      */
-    function UpdateCompany(UpdateRequest $request, $id)
+    function UpdateCompany(CompanyRequest $request, $id)
     {
         try {
             $company = Company::findorfail($id);
