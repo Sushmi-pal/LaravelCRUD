@@ -23,6 +23,8 @@ class CreateInvoicesTable extends Migration
                   ->constrained('invoice_items')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->string('tax');
+            $table->string('discount');
             $table->timestamps();
         });
     }
